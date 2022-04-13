@@ -12,6 +12,10 @@ Utilice el archivo `data.csv` para resolver las preguntas.
 
 """
 import csv, collections
+  
+with open('data.csv', newline='') as File:  
+    reader = csv.reader(File, delimiter='\t')
+    data = list(reader)
 
 def myPrint(data_structure):
 
@@ -36,10 +40,6 @@ def pregunta_01():
     Rta/
     214
     """
-    with open('data.csv', newline='') as File:  
-    reader = csv.reader(File, delimiter='\t')
-    data = list(reader)
-    
     counter=sum([int(x[1]) for x in data])
 
     return counter
@@ -59,10 +59,6 @@ def pregunta_02():
         ("E", 14),
     ]
     """
-    with open('data.csv', newline='') as File:  
-    reader = csv.reader(File, delimiter='\t')
-    data = list(reader)
-    
     counter =sorted(collections.Counter([ x[0] for x in data ]).most_common(),key=lambda tup:tup[0])
     
     return counter
@@ -87,10 +83,6 @@ def pregunta_03():
         ("E", 67),
     ]
     """
-    with open('data.csv', newline='') as File:  
-    reader = csv.reader(File, delimiter='\t')
-    data = list(reader)
-    
     letras = sorted(set([x[0] for x in data]))
     lista =[((x,sumvalues(x,data))) for x in letras]
 
@@ -118,10 +110,6 @@ def pregunta_04():
         ("12", 3),
     ]
     """
-    with open('data.csv', newline='') as File:  
-    reader = csv.reader(File, delimiter='\t')
-    data = list(reader)
-    
     return sorted(collections.Counter([ x[2][5:7] for x in data ]).most_common(),key=lambda tup:tup[0])
 
 #myPrint(pregunta_04())
@@ -132,7 +120,7 @@ def valores(letra, arraylist):
 
     return newarray
 
-#def pregunta_05():
+def pregunta_05():
     """
     Retorne una lista de tuplas con el valor maximo y minimo de la columna 2 por cada
     letra de la columa 1.
@@ -145,15 +133,10 @@ def valores(letra, arraylist):
         ("E", 9, 1),
     ]
     """
-    with open('data.csv', newline='') as File:  
-    reader = csv.reader(File, delimiter='\t')
-    data = list(reader)
-  
 
     letras = sorted(set([x[0] for x in data]))
-    letrasmax = [((x,max(valores(x,data)),min(valores(x,data)))) for x in letras]
-    
-    return letrasmax
+
+    return [((x,max(valores(x,data)),min(valores(x,data)))) for x in letras]
 
 #myPrint(pregunta_05())
 
@@ -177,9 +160,6 @@ def pregunta_06():
         ("jjj", 5, 17),
     ]
     """
-    with open('data.csv', newline='') as File:  
-    reader = csv.reader(File, delimiter='\t')
-    data = list(reader)
 
     listaclaves = []
     listadelistas = sorted([x[4] for x in data])
@@ -189,8 +169,8 @@ def pregunta_06():
             listaclaves.append((x[y][0:3],int(x[y][4:])))
 
     letras = sorted(set([x[0] for x in listaclaves]))
-    dicty = [((x,max(valores(x,listaclaves)),min(valores(x,listaclaves)))) for x in letras]
-    return dicty
+
+    return [((x,max(valores(x,listaclaves)),min(valores(x,listaclaves)))) for x in letras]
 
 #myPrint(pregunta_06())
 
@@ -213,10 +193,6 @@ def pregunta_07():
         (9, ["A", "B", "E", "A", "A", "C"]),
     ]
     """
-    with open('data.csv', newline='') as File:  
-    reader = csv.reader(File, delimiter='\t')
-    data = list(reader)
-    
     numbers = sorted(set([x[1] for x in data]))
     listatuplas = []
 
@@ -251,10 +227,6 @@ def pregunta_08():
         (9, ["A", "B", "C", "E"]),
     ]
     """
-    with open('data.csv', newline='') as File:  
-    reader = csv.reader(File, delimiter='\t')
-    data = list(reader)
-    
     listadetuplas = pregunta_07()
     listadetuplas_ordenada = [(x[0],sorted(set(x[1]))) for x in listadetuplas]
 
@@ -283,10 +255,6 @@ def pregunta_09():
         "jjj": 18,
     }
     """
-    with open('data.csv', newline='') as File:  
-    reader = csv.reader(File, delimiter='\t')
-    data = list(reader)
-    
     listaclaves = []
     listadelistas = sorted([x[4] for x in data])
     listadelistas = [ x.split(',') for x in listadelistas]
@@ -319,10 +287,6 @@ def pregunta_10():
         ("E", 3, 3),
     ]
     """
-    with open('data.csv', newline='') as File:  
-    reader = csv.reader(File, delimiter='\t')
-    data = list(reader)
-    
     Listatuplas = [((x[0],(len(x[3].split(','))),(len(x[4].split(','))))) for x in data]
 
 
@@ -349,10 +313,6 @@ def pregunta_11():
         ):
             listamerge.append()
     """
-    with open('data.csv', newline='') as File:  
-    reader = csv.reader(File, delimiter='\t')
-    data = list(reader)
-    
     listadelistas = sorted([x[3] for x in data])
     listadelistas = [ x.split(',') for x in listadelistas]
     listamerge = sorted(set([ x[y] for x in listadelistas for y in range(len(x))]))
@@ -383,10 +343,6 @@ def pregunta_12():
         'E': 324
     }
     """
-    with open('data.csv', newline='') as File:  
-    reader = csv.reader(File, delimiter='\t')
-    data = list(reader)
-    
     letras = sorted(set([x[0] for x in data]))
     dicty = {}
     for x in letras:
