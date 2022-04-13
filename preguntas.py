@@ -136,7 +136,7 @@ def pregunta_05():
 
     letras = sorted(set([x[0] for x in data]))
 
-    return [((x,min(valores(x,data)),max(valores(x,data)))) for x in letras]
+    return [((x,max(valores(x,data)),min(valores(x,data)))) for x in letras]
 
 #myPrint(pregunta_05())
 
@@ -170,7 +170,7 @@ def pregunta_06():
 
     letras = sorted(set([x[0] for x in listaclaves]))
 
-    return [((x,max(valores(x,listaclaves)),min(valores(x,listaclaves)))) for x in letras]
+    return [((x,min(valores(x,listaclaves)),max(valores(x,listaclaves)))) for x in letras]
 
 #myPrint(pregunta_06())
 
