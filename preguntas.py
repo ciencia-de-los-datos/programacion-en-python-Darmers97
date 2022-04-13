@@ -201,7 +201,7 @@ def pregunta_07():
         for y in data:
             if x == y[1]:
                 listaletras.append(y[0])
-        listatuplas.append((x,listaletras))
+        listatuplas.append((int(x),listaletras))
 
     return listatuplas
 
