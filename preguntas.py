@@ -135,8 +135,9 @@ def valores(letra, arraylist):
     """
 
     letras = sorted(set([x[0] for x in data]))
-
-    return [((x,max(valores(x,data)),min(valores(x,data)))) for x in letras]
+    letrasmax = [((x,max(valores(x,data)),min(valores(x,data)))) for x in letras]
+    
+    return letrasmax
 
 #myPrint(pregunta_05())
 
@@ -169,8 +170,8 @@ def pregunta_06():
             listaclaves.append((x[y][0:3],int(x[y][4:])))
 
     letras = sorted(set([x[0] for x in listaclaves]))
-
-    return [((x,max(valores(x,listaclaves)),min(valores(x,listaclaves)))) for x in letras]
+    dicty = [((x,max(valores(x,listaclaves)),min(valores(x,listaclaves)))) for x in letras]
+    return dicty
 
 #myPrint(pregunta_06())
 
